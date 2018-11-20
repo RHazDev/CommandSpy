@@ -1,80 +1,89 @@
+# See only chat messages containing "admin"
+# Do not see commands register, login, and msg
+# See only chat and commands from your server, lobby and factions
+# Do not see chat and commands from players Notch and Admin
 default:
   chat:
-    enabled: false
-    format: "(%server%) %player%: %message%"
-    servers:
-      type: whitelist
-      list:
-        - server
-        - lobby
-        - factions
-    players:
-      type: blacklist
-      list:
-        - Notch
-        - Admin
+    type: whitelist
+    list:
+      - admin
   commands:
-    enabled: true
-    format: "(%server%) %player%: /%command%"
     type: blacklist
     list:
       - register
       - login
       - msg
-    servers:
-      type: whitelist
-      list:
-        - server
-        - lobby
-        - factions
-    players:
-      type: blacklist
-      list:
-        - Notch
-        - Admin
+  servers:
+    type: whitelist
+    list:
+      - server
+      - lobby
+      - factions
+  players:
+    type: blacklist
+    list:
+      - Notch
+      - Admin
 
+# See all chat and all commands
 global:
   chat:
-    enabled: true
-    format: "(%server%) %player%: %message%"
-    servers:
-      type: blacklist
-      list: []
-    players:
-      type: blacklist
-      list: []
-  commands:
-    enabled: true
-    format: "(%server%) %player%: /%command%"
     type: blacklist
     list: []
-    servers:
-      type: blacklist
-      list: []
-    players:
-      type: blacklist
-      list: []
+  commands:
+    type: blacklist
+    list: []
+  servers:
+    type: blacklist
+    list: []
+  players:
+    type: blacklist
+    list: []
 
+# See only commands from your server
+# Do not see chat messages
+server:
+  chat:
+    type: whitelist
+    list: []
+  commands:
+    type: blacklist
+    list: []
+  servers:
+    type: whitelist
+    list:
+      - server
+  players:
+    type: blacklist
+    list: []
+
+# See only chat and commands from server lobby
 lobby:
   chat:
-    enabled: true
-    format: "(%server%) %player%: %message%"
-    servers:
-      type: whitelist
-      list:
-        - lobby
-    players:
-      type: blacklist
-      list: []
-  commands:
-    enabled: true
-    format: "(%server%) %player%: /%command%"
     type: blacklist
     list: []
-    servers:
-      type: whitelist
-      list:
-        - lobby
-    players:
-      type: blacklist
-      list: []
+  commands:
+    type: blacklist
+    list: []
+  servers:
+    type: whitelist
+    list:
+      - lobby
+  players:
+    type: blacklist
+    list: []
+
+# Disable everything
+none:
+  chat:
+    type: whitelist
+    list: []
+  commands:
+    type: whitelist
+    list: []
+  servers:
+    type: whitelist
+    list: []
+  players:
+    type: whitelist
+    list: []

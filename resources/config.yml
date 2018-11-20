@@ -1,1 +1,4 @@
 logging: true
+format: "&b(%server%) %player%: %message%"
+bypass-permission: "nspy.bypass"
+receive-permission: "nspy.receive"
