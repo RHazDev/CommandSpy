@@ -4,8 +4,11 @@ import fr.rhaz.minecraft.kotlin.bungee.*
 import fr.rhaz.minecraft.kotlin.catch
 import fr.rhaz.minecraft.kotlin.ex
 import fr.rhaz.minecraft.kotlin.lowerCase
+import fr.rhaz.minecraft.kotlin.textOf
 import fr.rhaz.minecraft.networkSpy.NetworkSpy.Profile.Module
 import net.md_5.bungee.api.CommandSender
+import net.md_5.bungee.api.chat.ClickEvent
+import net.md_5.bungee.api.chat.ClickEvent.Action.*
 import net.md_5.bungee.api.connection.ProxiedPlayer
 import net.md_5.bungee.api.event.ChatEvent
 import net.md_5.bungee.api.plugin.Plugin
@@ -56,6 +59,10 @@ class NetworkSpy: Plugin(){
             val msg = Config.format.replace(placeholders)
             if(Config.logging) logToFile(msg)
 
+            val text = textOf(msg).apply{
+                clickEvent = ClickEvent(SUGGEST_COMMAND, it.message)
+            }
+
             val receivers = proxy.players
                 .filter{it.hasPermission(Config.receive)}
                 .filter{it != player}
@@ -79,7 +86,7 @@ class NetworkSpy: Plugin(){
                     val words = it.message.split(" ")
                     if(profile.chat rejects words) continue
                 }
-                receiver.msg(msg)
+                receiver.msg(text)
             }
         }
     }
