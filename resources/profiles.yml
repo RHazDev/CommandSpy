@@ -1,0 +1,80 @@
+default:
+  chat:
+    enabled: false
+    format: "(%server%) %player%: %message%"
+    servers:
+      type: whitelist
+      list:
+        - server
+        - lobby
+        - factions
+    players:
+      type: blacklist
+      list:
+        - Notch
+        - Admin
+  commands:
+    enabled: true
+    format: "(%server%) %player%: /%command%"
+    type: blacklist
+    list:
+      - register
+      - login
+      - msg
+    servers:
+      type: whitelist
+      list:
+        - server
+        - lobby
+        - factions
+    players:
+      type: blacklist
+      list:
+        - Notch
+        - Admin
+
+global:
+  chat:
+    enabled: true
+    format: "(%server%) %player%: %message%"
+    servers:
+      type: blacklist
+      list: []
+    players:
+      type: blacklist
+      list: []
+  commands:
+    enabled: true
+    format: "(%server%) %player%: /%command%"
+    type: blacklist
+    list: []
+    servers:
+      type: blacklist
+      list: []
+    players:
+      type: blacklist
+      list: []
+
+lobby:
+  chat:
+    enabled: true
+    format: "(%server%) %player%: %message%"
+    servers:
+      type: whitelist
+      list:
+        - lobby
+    players:
+      type: blacklist
+      list: []
+  commands:
+    enabled: true
+    format: "(%server%) %player%: /%command%"
+    type: blacklist
+    list: []
+    servers:
+      type: whitelist
+      list:
+        - lobby
+    players:
+      type: blacklist
+      list: []
