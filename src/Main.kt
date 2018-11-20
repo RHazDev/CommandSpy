@@ -83,7 +83,7 @@ class NetworkSpy: Plugin(){
                     val command = it.message.split(" ")[0]
                     if(profile.commands rejects command) continue
                 } else{
-                    val words = it.message.split(" ")
+                    val words = it.message.split(" ").map{it.lowerCase}
                     if(profile.chat rejects words) continue
                 }
                 receiver.msg(text)
@@ -92,8 +92,8 @@ class NetworkSpy: Plugin(){
     }
 
     infix fun Module.rejects(entry: String) = when(type){
-        "blacklist" -> entry.lowerCase in list
-        "whitelist" -> entry.lowerCase !in list
+        "blacklist" -> entry.lowerCase in list.map{it.lowerCase}
+        "whitelist" -> entry.lowerCase !in list.map{it.lowerCase}
         else -> throw ex("&cBad configuration")
     }
 
