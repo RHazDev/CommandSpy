@@ -3,3 +3,7 @@ version: @version@
 main: fr.rhaz.minecraft.networkSpy.NetworkSpy
 author: Hazae41
 depend: [Kotlin4MC]
+
+permissions:
+  nspy.receive:
+    default: op
