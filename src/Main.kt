@@ -131,6 +131,8 @@ class NetworkSpy: Plugin(){
                         throw ex("&cUnknown profile: $profile")
                     Data[this.name] = profile
                     msg("&bNow using $profile profile")
+                    if(!hasPermission(Config.receive))
+                        msg("&cWarning: you don't have permission to receive spy messages")
                 }
                 "reload" -> when(arg(1)){
                     "all" -> {
