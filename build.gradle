@@ -5,7 +5,7 @@ plugins {
 apply plugin: 'maven-publish'
 
 group 'fr.rhaz.minecraft'
-version '2.0'
+version '2.0.1'
 def pname = "NetworkSpy"
 def desc = "Spy all your network"
 
@@ -17,9 +17,8 @@ repositories {
 }
 
 dependencies {
-    compileOnly "fr.rhaz.minecraft:kotlin4mc:2.1"
+    compileOnly "fr.rhaz.minecraft:kotlin4mc:2.1.1"
     compileOnly "net.md-5:bungeecord-api:1.13-SNAPSHOT"
-    compileOnly "org.spigotmc:spigot-api:1.13-R0.1-SNAPSHOT"
 }
 
 tasks.withType(Jar) {

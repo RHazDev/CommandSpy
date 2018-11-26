@@ -23,7 +23,6 @@ class NetworkSpy: Plugin(){
     }
 
     object Profiles: ConfigFile("profiles"){
-        operator fun contains(key: String) = key in config.keys
         operator fun contains(profile: Profile) = profile.path in config.keys
     }
 
@@ -39,8 +38,7 @@ class NetworkSpy: Plugin(){
     }
 
     object Data: ConfigFile("data"){
-        operator fun get(name: String) = config.getString(name, null)?.let(::Profile)
-        operator fun set(name: String, profile: Profile) = config.set(name, profile.path)
+        fun profile(name: String) = config.getString(name, null)?.let(::Profile)
         operator fun set(name: String, profile: String) = config.set(name, profile)
     }
 
@@ -70,7 +68,7 @@ class NetworkSpy: Plugin(){
                 .plus(proxy.console)
 
             for(receiver in receivers){
-                val profile = Data[receiver.name] ?: continue
+                val profile = Data.profile(receiver.name) ?: continue
                 if(profile !in Profiles) continue
                 if(profile.players rejects player.name) continue
                 if(profile.servers rejects server){
