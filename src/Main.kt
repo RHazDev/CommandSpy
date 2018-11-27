@@ -39,7 +39,6 @@ class NetworkSpy: Plugin(){
 
     object Data: ConfigFile("data"){
         fun profile(name: String) = config.getString(name, null)?.let(::Profile)
-        operator fun set(name: String, profile: String) = config.set(name, profile)
     }
 
     override fun onEnable(){
