@@ -5,7 +5,7 @@ plugins {
 apply plugin: 'maven-publish'
 
 group 'fr.rhaz.minecraft'
-version '2.0.1'
+version '2.0.2'
 def pname = "NetworkSpy"
 def desc = "Spy all your network"
 

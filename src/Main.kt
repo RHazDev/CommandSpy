@@ -124,8 +124,7 @@ class NetworkSpy: Plugin(){
             when(arg(0)){
                 "set" -> {
                     val profile = arg(1) ?: throw help()
-                    if(profile !in Profiles)
-                        throw ex("&cUnknown profile: $profile")
+                    if(profile !in Profiles) throw ex("&cUnknown profile: $profile")
                     Data[this.name] = profile
                     msg("&bNow using $profile profile")
                     if(!hasPermission(Config.receive))
